@@ -1,16 +1,39 @@
 import React, { useState } from "react";
-import Home from "./component/Home";
-import Practice from "./component/Practice";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login_page from "./pages/Login_page";
+import Home_page from "./pages/Home_page";
+import AboutUs_page from "./pages/AboutUs_page";
+import Menu_page from "./pages/Menu_page";
+import ContactUs_page from "./pages/ContactUs_page";
+import ProtectedRoute from "./routes/ProtectedRoute";
+
+import Footer from "./component/Footer/Footer";
+BrowserRouter;
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
-    <React.Fragment>
-      <div className="bg-red-600">{count}</div>
-      <Home count={count} setCount={setCount} />
-      <Practice />
-    </React.Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home_page />} />
+        <Route path="/login" element={<Login_page />} />
+        <Route
+          path="/about-us"
+          element={<ProtectedRoute Component={AboutUs_page} />}
+        />
+        <Route
+          path="/menu"
+          element={<ProtectedRoute Component={Menu_page} />}
+        />
+        <Route
+          path="/contact-us"
+          element={<ProtectedRoute Component={ContactUs_page} />}
+        />
+        <Route
+          path="/footer"
+          element={<ProtectedRoute Component={<Footer />} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
