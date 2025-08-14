@@ -9,6 +9,7 @@ import ContactUs_page from "./pages/ContactUs_page";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 import Footer from "./component/Footer/Footer";
+import AddCard from "./component/Cards/AddCard";
 BrowserRouter;
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home_page />} />
         <Route path="/login" element={<Login_page />} />
+        <Route path="/card" element={<AddCard />} />
         <Route
           path="/about-us"
           element={<ProtectedRoute Component={AboutUs_page} />}
